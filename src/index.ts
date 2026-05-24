@@ -89,10 +89,12 @@ export function apply(ctx: Context, config: Config) {
         })]
       }
       const user = record[0]
+      // 构造 @用户 文本
+      let atText = `<at id="${userId}"/>`
 
       // 检查今天是否已打卡
       if (user.signDate === today) {
-        return `你今天已经签到过了喵~`
+        return `${atText} 你今天已经签到过了喵~`
       }
 
       // 随机获得积分（范围由配置项控制）
@@ -110,8 +112,7 @@ export function apply(ctx: Context, config: Config) {
       const totalCounts = user.counts + bonus
       const totalSignDays = user.signDays + 1
 
-      // 构造 @用户 文本
-      let atText = `<at id="${userId}"/>`
+      
       if (bonus > config.minPoints + (config.maxPoints - config.minPoints) * 0.8) {
         atText += ' ' + config.luckPrompt
       }
@@ -129,15 +130,18 @@ export function apply(ctx: Context, config: Config) {
       const userId = session.userId
       const today = todayStr()
 
+      // 构造 @用户 文本
+      let atText = `<at id="${userId}"/>`
+
       const record = await ctx.database.get('credits', { platform, userId })
       if (!record.length) {
-        return '你还没有签到记录哦，发送“签到”开始吧~'
+        return `${atText} 你还没有签到记录哦，发送“签到”开始吧~`
       }
 
       const user = record[0]
       const signedToday = user.signDate === today ? '已' : '未'
 
-      return `<at id="${userId}"/> 当前拥有${user.counts}点数~
+      return `${atText} 当前拥有${user.counts}点数~
 一共签到了${user.signDays}天，今日${signedToday}签到哦`
     })
 
@@ -147,6 +151,9 @@ export function apply(ctx: Context, config: Config) {
     .action(async ({ session }, count = 10) => {
       // 限制最大查询数量为 20
       count = Math.min(Math.max(1, count), 20)
+      // 构造 @用户 文本
+      const userId = session.userId
+      let atText = `<at id="${userId}"/>`
 
       const records = await ctx.database.get('credits', {}, {
         sort: { signDays: 'desc' },
@@ -154,7 +161,7 @@ export function apply(ctx: Context, config: Config) {
       })
 
       if (!records.length) {
-        return '还没有任何签到记录呢~'
+        return `${atText} 还没有任何签到记录呢~`
       }
 
       const lines = records.map(r => `${r.userName}　${r.signDays}天`)
