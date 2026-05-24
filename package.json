@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-credit",
   "description": "用于指令调用的点数系统",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -23,5 +23,15 @@
   "dependencies": {
     "console": "^0.7.2",
     "database": "^0.0.2"
+  },
+  "koishi": {
+    "description": {                       
+      "zh": "[自用] 用于指令调用的点数系统，通过签到获得点数，用于其他插件的调用。",
+      "en": "[For personal use] A point system for command invocation, where points are earned through check-ins and can be used for other plugin calls."
+    },
+    "service": {
+      "required": ["database"]
+    },
+    "preview": true
   }
 }
