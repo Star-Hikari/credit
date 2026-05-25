@@ -1,6 +1,6 @@
 # koishi-plugin-credit
 
-[![npm](https://img.shields.io/npm/v/koishi-plugin-credit?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-credit)
+[![npm](https://img.shields.io/npm/v/@starhikari/koishi-plugin-credit?style=flat-square)](https://www.npmjs.com/package/@starhikari/koishi-plugin-credit)
 
 为 Koishi 机器人提供签到、积分查看和排行榜功能的点数系统。
 
@@ -8,7 +8,7 @@
 
 ```text
 # 在插件市场搜索「credit」并安装，或直接在终端执行
-npm install koishi-plugin-credit
+npm install koishi-plugin-@starhikari/credit
 ```
 
 然后将插件添加到 `koishi.yml`：

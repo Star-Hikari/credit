@@ -1,5 +1,5 @@
 {
-  "name": "koishi-plugin-credit",
+  "name": "@starhikari/koishi-plugin-credit",
   "description": "用于指令调用的点数系统",
   "version": "1.0.0",
   "main": "lib/index.js",
@@ -9,11 +9,10 @@
     "dist"
   ],
   "license": "MIT",
-  "scripts": {},
   "keywords": [
     "credit"
   ],
-  "repository": {                        
+  "repository": {
     "type": "git",
     "url": "https://github.com/Star-Hikari/credit.git"
   },
@@ -25,12 +24,14 @@
     "database": "^0.0.2"
   },
   "koishi": {
-    "description": {                       
+    "description": {
       "zh": "[自用] 用于指令调用的点数系统，通过签到获得点数，用于其他插件的调用。",
       "en": "[For personal use] A point system for command invocation, where points are earned through check-ins and can be used for other plugin calls."
     },
     "service": {
-      "required": ["database"]
+      "required": [
+        "database"
+      ]
     },
     "preview": true
   }
