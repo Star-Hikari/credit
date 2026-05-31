@@ -1,7 +1,7 @@
 {
   "name": "@starhikari/koishi-plugin-credit",
   "description": "用于指令调用的点数系统",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -33,6 +33,7 @@
       "required": [
         "database"
       ]
-    }
+    },
+    "category": "meme"
   }
 }
