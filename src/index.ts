@@ -90,8 +90,8 @@ export function apply(ctx: Context, config: Config) {
 
         // 查找或创建记录
         let record = await ctx.database.get('credits', { platform, userId })
+        // 没有记录，创建新记录
         if (!record.length) {
-          // 没有记录，创建新记录
           record = [await ctx.database.create('credits', {
             platform,
             userId,
@@ -207,7 +207,7 @@ export function apply(ctx: Context, config: Config) {
         }
 
         const lines = records.map(r => `${r.userName}　${r.signDays}天`)
-        return `🏆 签到排行榜 TOP${records.length}\n${lines.join('\n')}`
+        return `签到排行榜 TOP${records.length}\n${lines.join('\n')}`
       } catch (e) {
         logger.error(`查看排行榜异常: ${e instanceof Error ? e.message : String(e)}`)
         return `查看排行榜出现异常，请联系管理员~`
