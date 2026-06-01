@@ -72,9 +72,15 @@ export function apply(ctx: Context, config: Config) {
     unique: [['platform', 'userId']],
   })
 
-  // 获取今天的日期字符串
+  // 获取今天的日期字符串（使用中国时区 UTC+8）
   function todayStr(): string {
-    return new Date().toISOString().slice(0, 10)
+    const formatter = new Intl.DateTimeFormat('zh-CN', {
+      timeZone: 'Asia/Shanghai',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    })
+    return formatter.format().replace(/\//g, '-')
   }
 
   // 指令：sign 打卡
