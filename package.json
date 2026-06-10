@@ -1,7 +1,7 @@
 {
   "name": "@starhikari/koishi-plugin-credit",
   "description": "用于指令调用的点数系统",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -26,12 +26,15 @@
   },
   "koishi": {
     "description": {
-      "zh": "用于指令调用的点数系统，通过签到获得点数，用于其他插件的调用。",
-      "en": "A point system for command invocation, where points are earned through check-ins and can be used for other plugin calls."
+      "zh": "基于指令调用的点数系统，通过签到获得点数，用于其他插件的调用。支持图片显示排行榜",
+      "en": "A point system for command invocation, where points are earned through check-ins and can be used for other plugin calls.Supports displaying leaderboards with images."
     },
     "service": {
       "required": [
         "database"
+      ],
+      "optional": [
+        "puppeteer"
       ]
     }
   }
